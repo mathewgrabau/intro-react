@@ -1,3 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
 const Pet = (props) => {
   return React.createElement("div", {}, [
     React.createElement("h1", {}, props.name),
@@ -19,7 +22,7 @@ const App = () => {
       name: "Pepper",
       breed: "Parrot",
     }),
-    Reat.createElement(Pet, {
+    React.createElement(Pet, {
       animal: "Cat",
       name: "Meow",
       breed: "Mixed",
@@ -31,4 +34,4 @@ const App = () => {
 const container = document.getElementById("root");
 const root = ReactDOM.createRoot(container);
 // This actually renders the App element into it.
-root.render(React.createElement(Ap));
+root.render(React.createElement(App));
