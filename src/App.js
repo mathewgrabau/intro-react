@@ -19,7 +19,7 @@ const App = () => {
       name: "Pepper",
       breed: "Parrot",
     }),
-    React.createElement(Pet, {
+    Reat.createElement(Pet, {
       animal: "Cat",
       name: "Meow",
       breed: "Mixed",
@@ -31,4 +31,4 @@ const App = () => {
 const container = document.getElementById("root");
 const root = ReactDOM.createRoot(container);
 // This actually renders the App element into it.
-root.render(React.createElement(App));
+root.render(React.createElement(Ap));
