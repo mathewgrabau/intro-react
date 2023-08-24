@@ -1,15 +1,40 @@
 /* global document */
 // Added just to get the eslint highlighting to process correctly.
 import { createRoot } from "react-dom/client";
+import { Link, Routes, Route, BrowserRouter } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import SearchParams from "./SearchParams";
+import Details from "./Details";
+
+// Create a client, allowing infinite caching (not a good idea in production, but since the app is unlikely to have new data, it's fine!)
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+      cacheTime: Infinity,
+    },
+  },
+});
+
+// The components that wrap, doesn't mean that it displays anything. They just provide context into the lower context.
+// While it looks awkward, it does allow control around the context exposed to a given area.
 
 const App = () => {
   return (
-    <div>
-      <h1>Adopt Me!</h1>
-      <SearchParams />
-    </div>
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <div>
+          <header>
+            <Link to="/">Adopt Me!</Link>
+          </header>
+          <Routes>
+            <Route path="/details/:id" element={<Details />} />
+            <Route path="/" element={<SearchParams />} />
+          </Routes>
+        </div>
+      </QueryClientProvider>
+    </BrowserRouter>
   );
 };
 
