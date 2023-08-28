@@ -6,6 +6,8 @@ import Results from "./Results";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
+/* global FormData */
+
 // Can be a hybrid form in terms of controlled/uncontrolled
 const SearchParams = () => {
   // the requestParams that is being
